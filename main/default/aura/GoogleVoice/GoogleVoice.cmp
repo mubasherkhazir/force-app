@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <div class="slds-button-group" role="group">
+  	<button class="slds-button slds-button_neutral" onmousedown="{!c.down}" onmouseup="{!c.up}"
+            >Record Voice</button>
+	</div>
+    
+    
+    
+</aura:component>

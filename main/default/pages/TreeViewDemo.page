@@ -1,0 +1,33 @@
+<apex:page sidebar="false" controller="treenodes" showheader="false">
+    <apex:outputPanel id="details" >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Account Hierarchy" columns="1" collapsible="true">
+                <apex:repeat value="{!mainnodes}" var="nodes">
+                    <ul id="myUL">
+                        <li><span class="caret">{!nodes.parentAccount.Name}</span></li>
+                            <ul class="nested">
+                            <apex:repeat value="{!nodes.accounts}" var="child">
+                                   <li>{!child.Name}</li> 
+                            </apex:repeat>
+                                    </ul>
+                        </ul>
+                </apex:repeat>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:outputPanel>
+    <!-- Tree -->
+    <div class="treeheader" style="height:30px;">&nbsp;</div>
+    <apex:repeat value="{!mainnodes}" var="nodes">        
+        <li style="line-height:180%"><span class="caret"><apex:outputtext style="color:blue;" 
+                                                                          escape="false" value="{!nodes.parentAccount.Name}"/></span>             
+            <ul class="nested" style="list-style-type:square">            
+                <apex:repeat value="{!nodes.accounts}" var="child">                    
+                    <li><span class="formattextcon"><apex:outputtext style="color:green;" escape="false" 
+                                                                     value="{!child.Name}"/></span>                        
+                    </li>                 
+                </apex:repeat>               
+            </ul>          
+        </li>    
+    </apex:repeat>
+    <!-- End of Tree -->  
+</apex:page>

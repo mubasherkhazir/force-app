@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" 
+                controller="StudentAidController">
+    <aura:attribute name="idRecord" type="String" />
+    <aura:attribute name="student" type="Student__c" required="true"
+                    default ="{'sObjectType' :'Student__c',
+                              'Applied_for_Financial_Aid__c':false}" />
+    <!--THE DEFAULT OBJECT will default create a new object and IS THERE TO 
+PREVENT THINGS FROM BLOWING UP IF THE RECORD COULDN'T BE READ
+ FOR SOME REASON-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <!-- this will call the doinit controller function to load the value of the current student 
+record -->
+    
+    <p>
+    Financial Aid Status: <ui:outputText value="{!if(v.student.Applied_for_Financial_Aid__c,
+                                                'Applied','No application on file')}" />
+        <ui:button label="Apply for financial aid" press="{!c.applyForAid}" />
+    </p>
+</aura:component>

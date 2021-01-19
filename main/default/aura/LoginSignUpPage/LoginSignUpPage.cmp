@@ -1,0 +1,45 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="increment" type="Integer" default="0" />
+    <aura:handler event="c:Result" action="{!c.getData}" />
+    <aura:attribute name="flag" type="boolean" default="false" />
+    
+    <!--MAIN DIV -->
+    <div class="slds-align_absolute-center" aura:id="login">
+        <div class="slds-page-header">
+            <div class="slds-text-heading_large">SIMPLE LOGIN AND SIGNUP FORM.</div>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap slds-align_absolute-center">
+        <div class="slds-col slds-size_2-of-12 slds-box slds-box_xx-small">
+            <div class=" slds-align_absolute-center slds-text-heading_small">
+                <lightning:button variant="base" label="LOGIN" title="Base action" onclick="{! c.handleLogin }"/>
+            </div>
+            
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-box slds-box_xx-small">
+            <div class="slds-align_absolute-center slds-text-heading_small">
+                <lightning:button variant="base" label="SIGN-UP" title="Base action" onclick="{! c.handleSignup }"/>
+            </div>
+        </div>
+    </div>
+    <div class="slds-align_absolute-center">
+        <div class="slds-grid slds-wrap">
+            <aura:if isTrue="{!v.increment == 0}">
+                <div class="slds-box" aura:id="login">
+                    <c:LoginForm />
+                </div>
+            </aura:if>
+        </div>
+    </div>
+    <div class="slds-align_absolute-center">
+        <aura:if isTrue="{!v.increment == 1}">
+            <div class="slds-box slds-size_1-of-3" aura:id="signup">
+                <c:NewFormAccount />
+            </div>
+        </aura:if>
+    </div>    
+    <div aura:id="welcome">
+    </div>
+    
+</aura:component>

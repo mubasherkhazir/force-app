@@ -1,0 +1,35 @@
+<!--Create an aura component that will use to create a new contact with account lookup.-->
+<aura:component controller="ContactWithAccountIDApex" implements="flexipage:availableForAllPageTypes,force:appHostable">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="accountList" type="Account[]" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:card >
+    <aura:set attribute="title">
+        <div class="slds-text-heading_medium slds-card__header slds-grid" >
+            <lightning:icon iconName="action:add_contact" size="small"/> 
+            Create New Contact
+        </div>
+    </aura:set>
+    </lightning:card>
+    <div class="slds-size_3-of-3">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+            <lightning:card >
+                <lightning:recordEditForm aura:id="createContact" objectApiName="Contact" onsubmit="{!c.submit}">
+                    <lightning:messages />
+                    <lightning:inputField fieldName="FirstName" />
+                    <lightning:inputField fieldName="LastName" />
+                    <lightning:inputField fieldName="Email" />
+                    <lightning:inputField fieldName="AccountId" required="true"/>
+                    <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Create" label="Create" />
+                </lightning:recordEditForm>    
+            </lightning:card>
+        </div>
+    </div>
+    
+    <lightning:card >
+        <aura:set attribute="footer">
+            <lightning:badge class="slds-badge slds-theme_success" label="author: @mubashir Khazir">
+            </lightning:badge>
+        </aura:set>
+    </lightning:card>
+</aura:component>

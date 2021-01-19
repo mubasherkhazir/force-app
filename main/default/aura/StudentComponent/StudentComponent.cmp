@@ -1,0 +1,23 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="StudentController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="idRecord" type="String" />
+    <aura:attribute name="student" type="Student__c"
+                    default="{
+                             'sObjectType':'Student__c',
+                             'FirstName__c' :'',
+                             'LastName__c':'',
+                             'Name':'',
+                             'Age__c':'',
+                             }" />
+    
+    <lightning:input label="Full Name" value="{!v.student.Name}" required="true" />
+    <lightning:input label="First Name" value="{!v.student.FirstName__c}" required="false" />
+    <lightning:input label="Last Name" value="{!v.student.LastName__c}" required="false" />
+    <lightning:input label="Age" value="{!v.student.Age__c}" required="false" />
+    <lightning:button variant="success" label="Success" title="Success" onclick="{! c.submit }"/>
+    
+    <lightning:card  title="Hello">
+        <force:recordEdit aura:id="edit" recordId="{!v.idRecord}"/>
+        <lightning:button label="Save" onclick="{!c.save}"/>
+    </lightning:card>
+</aura:component>

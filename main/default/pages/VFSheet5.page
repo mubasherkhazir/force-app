@@ -1,0 +1,30 @@
+<!--Create a page with a custom mandatory field (Contact) which automatically fills 
+the another text field (Contact's account name) -->
+<apex:page Controller="ContactsController" >
+    <apex:pageMessages id="msgs"/>
+    <apex:outputPanel id="firstPanel" >
+        <apex:pageBlock title="Contact View">
+                <apex:panelGrid columns="2">
+                    <apex:outputLabel value="View:"/>
+                    <apex:form >
+                        <apex:selectList value="{!selectedContact}" multiselect="false" size="1" onchange="{!Contacts}">
+                            <apex:selectOptions value="{!contacts}" />
+                        </apex:selectList>
+                        <apex:commandButton value="Go" action="{!test}" rerender="out, msgs" status="status"/>
+                    </apex:form>
+                </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:outputPanel>
+    <apex:outputPanel id="out">
+        <apex:actionstatus id="status" startText="testing...">
+            <apex:facet name="stop">
+                <apex:outputPanel >
+                    <p>The Related Account is :</p>
+                    <apex:dataList value="{!accName}" var="c">
+                    <apex:outputField value="{!c.Name}"/>
+                    </apex:dataList>
+                </apex:outputPanel>
+            </apex:facet>
+        </apex:actionstatus>
+    </apex:outputPanel>
+</apex:page>

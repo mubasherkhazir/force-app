@@ -1,0 +1,69 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <apex:includeScript value="{!$Resource.svg}" />
+        <head>
+            <apex:slds />
+        </head>
+        <body>
+            <div class="slds-scope">
+                <div class="slds-box slds-text-heading_large slds-m-around_xx-large ">
+                    <p class="slds-text-align_center slds-border_bottom slds-text-color_Success">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img src="https://trailhead.salesforce.com/assets/trailhead-logo-86df2c10154e03fb8b18110597a115ecce58d8bb2887e33a155ae8784cca5784.svg" alt="meaningful text" />
+                        </span>
+                        Salesforce Lightning Design System Trailhead Module
+                    </p>
+                    <div class="slds-grid sldc-wrap slds-p-top_medium slds-gutters slds-grid_reverse ">
+                        <div class="slds-col slds-size_1-of-3 slds-text-align_center ">
+                            <p class="slds-box slds-box_x-small slds-text-body slds-m-around_x-small slds-theme_info">
+                                Learning SLDS.
+                            </p>
+                        </div>
+                        <div class="slds-col slds-size_2-of-3 slds-text-align_center">
+                            <p class=" slds-box slds-box_x-small slds-text-body slds-m-around_x-small slds-theme_success">
+                                Learning SLDS.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            <p class=" slds-box slds-box_x-small slds-text-body slds-m-around_x-small slds-theme_warning">
+                                <span class="slds-icon_container slds-icon-standard" title="description of icon when needed">
+                                    <svg aria-hidden="true" class="slds-icon">
+                                        <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#apex')}"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Account Icon</span>
+                                </span>
+                                Learning SLDS.
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid slds-text-body  slds-theme_shade">
+                    <div class="slds-col ">
+                        <span>
+                            The Design System grid is based on CSS Flexbox and provides a flexible, mobile-first, device-agnostic scaffolding system. The Design System also includes helper classes that you can use to alter the look and behavior of your grid, such as alignment, order, flow, and padding.
+                        </span>
+                    </div>
+                    <div class="slds-col">
+                        <span>
+                            The Design System grid is based on CSS Flexbox and provides a flexible, mobile-first, device-agnostic scaffolding system. The Design System also includes helper classes that you can use to alter the look and behavior of your grid, such as alignment, order, flow, and padding.
+                        </span>
+                    </div>
+                    <div class="slds-col">
+                        <span>
+                            The Design System grid is based on CSS Flexbox and provides a flexible, mobile-first, device-agnostic scaffolding system. The Design System also includes helper classes that you can use to alter the look and behavior of your grid, such as alignment, order, flow, and padding.
+                        </span>
+                    </div>
+                </div>
+                <!-- RESPONSIVE GRID EXAMPLE -->
+                <div class="slds-grid slds-wrap slds-text-body slds-m-around_x-small slds-theme_info ">
+                    <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_3-of-4 ">A</div>
+                    <div class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 ">B</div>
+                </div>
+                                
+            </div>
+        </body>
+    </html>
+</apex:page>

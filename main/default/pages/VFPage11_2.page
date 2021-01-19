@@ -1,0 +1,32 @@
+<apex:page standardController="Opportunity"  extensions="OpportunityController2">
+    
+    
+    <script>
+    
+    
+    </script>
+    
+    
+    <apex:pageMessages id="msgs"/>
+    <apex:form >
+        <apex:outputPanel id="out">
+            <apex:pageBlock id="testid" rendered="{!flag}">
+                <apex:commandButton value="Test"  />
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+    <apex:form id="twoform">
+        <apex:selectList value="{!selectedOpportunity}" multiselect="false" size="1" onchange="printing()" id="list2">
+            <apex:selectOptions value="{!Opportunities}" id="option"/>
+            <script>
+            //function printing()
+            {
+                var cc=document.getElementById('{!$Component.twoform.list2}').value;
+                //var c = cc.value(); // as output Text renderd Span element.
+                alert(cc);
+            };
+            </script>
+        </apex:selectList>
+        <apex:commandButton value="Go" action="{!test}" rerender="out, msgs" status="status"/>
+    </apex:form>
+</apex:page>

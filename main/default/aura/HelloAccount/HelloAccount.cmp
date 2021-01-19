@@ -1,0 +1,12 @@
+<aura:component controller= "CreateNewAccountApexController">
+    <aura:attribute name= "accountList" type= "Account[]" />
+    
+    
+    <aura:attribute name= "accoutName2" type= "Account" default= "{ 'sobjectType': 'Account','Name': 'qwerty','AccountNumber':'976', 'BillingPostalCode':'23241'}"/>
+    <lightning:input value="{!v.accoutName2.Name}" label= "Account Name" type="String"/>
+    <lightning:input value="{!v.accoutName2.AccountNumber}" label= "Account Number" type="DECIMAL"/>
+    <lightning:input value="{!v.accoutName2.BillingPostalCode}" label= "BillingPostalCode" type="String"/>
+
+    <lightning:button variant="brand-outline" label="INSERT" title="Brand action" onclick="{! c.handleClick }" />
+    <!--lightning:button variant="brand-outline" label="ADD" title="Brand action" onclick="{! c.handleClick2 }" value="{!v.accountList}" /-->
+</aura:component>

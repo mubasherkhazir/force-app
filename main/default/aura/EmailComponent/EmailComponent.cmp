@@ -1,0 +1,19 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-box">
+            <lightning:recordEditForm recordId="{!v.recordId}" objectApiName="EmailMessage">
+                <lightning:messages />
+                <lightning:outputField fieldName="ValidatedFromAddress" />
+                <lightning:inputField fieldName="ToAddress" />
+                <lightning:inputField fieldName="BccAddress" />
+                <lightning:inputField fieldName="Subject" />
+                <lightning:inputField fieldName="TextBody" />
+                <lightning:inputField fieldName="RelatedToId" />
+                <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="Send" label="Update" />
+            </lightning:recordEditForm>
+        </div>
+        
+    </div> 
+    
+</aura:component>

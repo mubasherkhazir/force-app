@@ -1,0 +1,109 @@
+<aura:component controller="LoginApexController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute access="global" name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
+    <aura:attribute access="global" name="progressIndicatorFlag" type="String" />
+    <aura:attribute access="global" name="flag" type="boolean" default="false" />
+    <aura:attribute access="global" name="contentId" type="String" />
+    <aura:attribute access="global" name="users" type="list" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:attribute access="global" name="user" type="Login_Users__c"  default="{
+                                                                'Name' : '',
+                                                                'Username__c' : '',
+                                                                'Password__c'  : '',
+                                                                'Gender__c'  : '',
+                                                                'DOB__c' : '',
+                                                                'Address_Line_1__c' :'',
+                                                                'Address_Line_1__c' : '',
+                                                                'ZIP_Code__c' : '',
+                                                                'Country__c' : '',
+                                                                'Contact_Email__c' : '',
+                                                                'Phone__c' : '',
+                                                                'Answer__c' : '',
+                                                                'Questions__c' : ''
+                                                                }"/>
+    
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    
+    <!--loading spinner start... style=Brand Medium (blue dots)-->
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <!-- Loading spinner end--> 
+    
+    <lightning:recordEditForm aura:id="userLogin" 
+                              onsuccess="{!c.handleSuccess}"
+                              objectApiName="Login_Users__c">
+        <lightning:messages />
+        <lightning:progressIndicator type="path" currentStep="{!v.progressIndicatorFlag}">
+            <lightning:progressStep label="Step One" value="step1"/>
+            <lightning:progressStep label="Step Two" value="step2"/>
+            <lightning:progressStep label="Step Three" value="step3"/>
+        </lightning:progressIndicator>
+        <div aura:id="stepOne">
+            <lightning:inputField fieldName="Name" value="{!v.user.Name}" aura:id="NameField"/>
+            <span style="color:red;font-size:12px;" id="NameFieldError"></span>
+            
+            <lightning:inputField fieldName="Username__c" value="{!v.user.Username__c}" aura:id="UserName"/>
+            <span style="color:red;font-size:12px;" id="UserNameFieldError"></span>
+            
+            <span style="color:green;font-size:12px;" id="UserNameFieldAccept"></span>
+            <lightning:button class="slds-align_absolute-center" variant="base" label="Check Availability" title="Base action" onclick="{! c.handleAvailability }"/>
+            
+            <lightning:input type="password" name="Password" label="Password" required="true" value="{!v.user.Password__c}" aura:id="Password"/>
+            <span style="color:red;font-size:12px;" id="PasswordFieldError"></span>
+            
+            <lightning:inputField fieldName="Gender__c" value="{!v.user.Gender__c}" aura:id="Gender"/>
+            <span style="color:red;font-size:12px;" id="GenderFieldError"></span>
+            
+            <lightning:inputField fieldName="DOB__c" value="{!v.user.DOB__c}" aura:id="DOB"/>
+            <span style="color:red;font-size:12px;" id="DOBFieldError"></span>
+            
+            <div class="slds-m-top_medium">
+                <lightning:button label="Next" onclick="{!c.goToStepTwo}" variant="brand" />
+            </div>
+            
+        </div>
+        <div aura:id="stepTwo">
+            <lightning:inputField fieldName="Address_Line_1__c" value="{!v.user.Address_Line_1__c}" aura:id="Address1"/>
+            <span style="color:red;font-size:12px;" id="Address1FieldError"></span>
+            
+            <lightning:inputField fieldName="Address_Line_2__c" value="{!v.user.Address_Line_2__c}" aura:id="Address2"/>
+            <span style="color:red;font-size:12px;" id="Address2FieldError"></span>
+            
+            <lightning:inputField fieldName="ZIP_Code__c" value="{!v.user.ZIP_Code__c}" aura:id="ZipCode"/>
+            <span style="color:red;font-size:12px;" id="ZipCodeFieldError"></span>
+            
+            <lightning:inputField fieldName="Country__c" value="{!v.user.Country__c}" aura:id="Country"/>  
+            <span style="color:red;font-size:12px;" id="CountryFieldError"></span>
+            
+            <lightning:button label="Back" onclick="{!c.goBackToStepOne}" />
+            <lightning:button label="Next" onclick="{!c.goToStepThree}" variant="brand"/> 
+        </div>
+        <div aura:id="stepThree">
+            <lightning:inputField fieldName="Contact_Email__c" value="{!v.user.Contact_Email__c}" aura:id="Contactfield"/>
+            <lightning:inputField fieldName="Phone__c" value="{!v.user.Phone__c}" aura:id="Phonefield"/>
+            <lightning:inputField fieldName="Questions__c" aura:id="QuestionsField" />
+            <lightning:inputField fieldName="Answer__c"  aura:id="AnswerField" />
+
+            <aura:if isTrue="{!v.flag}" >
+                <lightning:fileCard fileId="{!v.contentId}" description="Sample Description"/>
+            </aura:if>
+            
+            <lightning:fileUpload label="Attach receipt"
+                                  name="fileUploader"
+                                  multiple="true"
+                                  accept="{!v.filetype}"
+                                  recordId="0052w000003KgjQAAS"
+                                  onuploadfinished="{!c.handleUploadFinished}" />
+            <lightning:button label="Back" onclick="{!c.goBackToStepTwo}"/>
+            <lightning:button label="Save" type="submit" variant="brand"/> 
+        </div>
+        
+    </lightning:recordEditForm>
+</aura:component>

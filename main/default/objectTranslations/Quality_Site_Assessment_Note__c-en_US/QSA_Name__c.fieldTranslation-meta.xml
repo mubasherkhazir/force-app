@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- QSA Name --></label>
+    <name>QSA_Name__c</name>
+    <relationshipLabel><!-- Quality Site Assessment Note --></relationshipLabel>
+</CustomFieldTranslation>

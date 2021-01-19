@@ -1,0 +1,47 @@
+<apex:page Controller="OpportunityController">
+    
+    <script>
+    function confirmc(){
+        confirm("hello");
+        console.log("hello");
+    };
+    </script>
+    
+    <apex:outputPanel id="testId">
+            <apex:form >
+                <apex:pageBlock id="sed" rendered="{!flag}">
+                    <apex:commandButton value="Test"  />
+                </apex:pageBlock>
+            </apex:form>
+    </apex:outputPanel>
+
+    <apex:pageBlock >
+        <apex:dataTable value="{!opportunities}" var="o" cellPadding="4" border="1">
+            <apex:column >
+                <apex:outputPanel >
+                    <apex:form >
+                        <apex:commandLink reRender="testId" action="{!test}" >
+                            <apex:param name="oid" value="{!o.id}"/>
+                            {!o.Name}
+                        </apex:commandLink>                        
+                    </apex:form>
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column value="{!o.CloseDate}"/>
+            <apex:column value="{!o.StageName}"/>
+        </apex:dataTable>
+    </apex:pageBlock>
+    <apex:pageBlock id="detailPage">
+        <apex:outputPanel >
+            <apex:form >
+                <apex:pageBlock id="testId" rendered="{!flag}">
+                    <apex:commandButton value="Test"  />
+                </apex:pageBlock>
+            </apex:form>
+            <apex:actionStatus startText="Requesting.....">
+                <apex:facet name="stop">
+                    <apex:detail subject="{!$CurrentPage.parameters.oid}" relatedList="false" title="false" inlineEdit="true"/>
+                </apex:facet>
+            </apex:actionStatus>
+        </apex:outputPanel>
+    </apex:pageBlock></apex:page>

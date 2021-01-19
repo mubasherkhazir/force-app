@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Contacts List app</label>
+    <navType>Standard</navType>
+    <tabs>Contact_List</tabs>
+    <tabs>Mileage__c</tabs>
+    <tabs>Associate_students__c</tabs>
+    <tabs>Login_Users__c</tabs>
+    <tabs>Quality_Site_Assessment_Note__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Contacts_List_app_UtilityBar</utilityBar>
+</CustomApplication>

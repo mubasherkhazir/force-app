@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>force:detailPanel</componentName>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>ApplyForAid</componentName>
+            </componentInstance>
+        </itemInstances>
+        <name>rightsidebar</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>StudentComponent</componentName>
+            </componentInstance>
+        </itemInstances>
+        <name>leftsidebar</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Student Record</masterLabel>
+    <sobjectType>Student__c</sobjectType>
+    <template>
+        <name>flexipage:recordHomeThreeColTemplateDesktop</name>
+    </template>
+    <type>RecordPage</type>
+</FlexiPage>

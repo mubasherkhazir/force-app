@@ -1,0 +1,38 @@
+<aura:component controller='ManagedContentControllerForLex' implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name='contentList' type='ConnectApi.ManagedContentVersion[]' />
+    <aura:attribute name='language' type='String' />
+    <aura:attribute name='contentType' type='String' />
+    <aura:attribute name='managedContentIds' type='String' />
+    <aura:attribute name='topicNames' type='String' />
+    <aura:handler name='init' value='{!this}' action='{!c.doInit}' />
+        
+    <ui:inputText label="Content Type : " class="field" value="{!v.contentType}"/>
+    <ui:inputText label="Enter ',' seperated ManagedContentIds : " class="field" value="{!v.managedContentIds}"/>
+    <ui:inputText label="Enter ',' seperated Topic Names : " class="field" value="{!v.topicNames}"/>
+    <ui:button aura:id="button" buttonTitle="Click to get M Conent" class="button" label="Get MContent" press="{!c.getMcContent}"/>
+    <aura:if isTrue="{!v.contentList.length != 0}">
+        <aura:iteration items='{!v.contentList}' var='record'>
+            
+            <c:McComponent title='{!record.title}' type='{!record.typeLabel}' managedContentId='{!record.managedContentId}' topicsList = '{!record.associations.topics}'  imgUrl = '{!record.contentNodes.bannerImage.url}'/>
+            <br/>
+            
+        </aura:iteration>
+    </aura:if>
+    <!--Declare Attributes-->
+    <aura:attribute name="GenreList" type="List" default="[]" description="Genre Picklist Values"/>
+    <aura:attribute name="selectedGenreList" type="List" default="[]" description="Selected Genre Picklist Values"/>
+     
+    	<div class="slds-m-around_xx-large">
+        <lightning:dualListbox aura:id="selectGenre"
+                               name="Genre"
+                               label="Select Genre"
+                               sourceLabel="Available List"
+                               selectedLabel="Selected List"
+                               options="{!v.GenreList }"
+                               value="{!v.selectedGenreList}"
+                               onchange="{!c.handleGenreChange}"/>
+        <lightning:button variant="brand" label="Get Selected Genre" onclick="{!c.getSelectedGenre}" />
+    
+    </div>
+</aura:component>

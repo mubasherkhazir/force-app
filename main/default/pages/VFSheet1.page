@@ -1,0 +1,4 @@
+<!--Create a page that displays the detail page same as of the Account object along with its related lists-->
+<apex:page standardController="Account" sidebar="false" title="Account Details">
+   <apex:detail subject="{!account.ID}" inlineEdit="true" relatedList="true" title="true" relatedListHover="false" />
+</apex:page>

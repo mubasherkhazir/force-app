@@ -1,0 +1,134 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="increment" type="Integer" default="0" />
+    <aura:attribute name="flag" type="boolean" default="true" />
+    <aura:attribute name="flag2" type="boolean" default="true" />
+    <aura:attribute name="bar" type="Integer" default="0" />
+    <aura:attribute name="user" type="Login_Users__c"  default="{
+                                                                'Name' : '',
+                                                                'Username__c' : '',
+                                                              'Password__c'  : '',
+                                                              'Gender__c'  : '',
+                                                               'DOB__c' : '',
+                                                                'Address_Line_1__c' :'',
+                                                                'Address_Line_1__c' : '',
+                                                                'ZIP_Code__c' : '',
+                                                                'Country__c' : '',
+                                                                'Contact_Email__c' : '',
+                                                                'Phone__c' : '',
+                                                                }"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.Init}" />
+    <h1>
+        <span class="slds-page-header__title slds-truncate slds-m-top_small" title="Sign up page">Sign up: Fill all the Details</span>
+    </h1>
+    
+    <!--START OF MAIN PAGE GRID -->
+    
+    <div class="slds-p-left_large slds-grid slds-wrap slds-m-top_small">
+        
+        <!--FIRST COLOUM -->
+        <div class="slds-col  slds-align_left">
+            <!--BOX INSIDE COLUMN -->
+            <div class="slds-box slds-size_1-of-2 slds-p-around_small">
+                <lightning:progressBar value="{!v.bar}" size="medium" />
+                
+                <lightning:recordEditForm aura:id="editform"
+                                          objectApiName="Login_Users__c"
+                                          onsubmit="{!c.handleSubmit}"
+                                          onsuccess="{!c.handleSuccess}"
+                                          >
+                    <lightning:messages />
+                    
+                    <!--START OF FIRST PAGE -->
+                    <aura:if isTrue="{!v.increment == 0}">
+                        <div aura:id="firstPage">
+                            <lightning:inputField fieldName="Name" value="{!v.user.Name}" aura:id="field"/>
+                            <lightning:inputField fieldName="Username__c" value="{!v.user.Username__c}" aura:id="field"/>
+                            <lightning:inputField fieldName="Password__c" value="{!v.user.Password__c}" type="Password" aura:id="field"/>
+                            <lightning:inputField fieldName="Gender__c" value="{!v.user.Gender__c}" aura:id="field"/>
+                            <lightning:inputField fieldName="DOB__c" value="{!v.user.DOB__c}" aura:id="field"/>
+                        </div>
+                    </aura:if>
+                    <!--END OF FIRST PAGE -->
+                    
+                    <!--START OF SECOND PAGE -->
+                    <aura:if isTrue="{!v.increment == 1}">
+                        <div aura:id="SecondPage">
+                            <lightning:inputField fieldName="Address_Line_1__c" value="{!v.user.Address_Line_1__c}" aura:id="field"/>
+                            <lightning:inputField fieldName="Address_Line_2__c" value="{!v.user.Address_Line_2__c}" aura:id="field"/>
+                            <lightning:inputField fieldName="ZIP_Code__c" value="{!v.user.ZIP_Code__c}" aura:id="field"/>
+                            <lightning:inputField fieldName="Country__c" value="{!v.user.Country__c}" aura:id="field"/>  
+                        </div>  
+                    </aura:if>
+                    
+                    
+                    <!--END OF SECOND PAGE -->
+                    <aura:if isTrue="{!v.increment == 2}">
+                        <div aura:id="SecondPage">
+                            <lightning:inputField fieldName="Contact_Email__c" value="{!v.user.Contact_Email__c}" aura:id="field"/>
+                            <lightning:inputField fieldName="Phone__c" value="{!v.user.Phone__c}" aura:id="field"/>
+                        </div>  
+                    </aura:if>
+                    
+                    <!--START OF THIRD PAGE -->
+                    <div aura:id="ThirdPage">
+                        
+                        
+                        
+                        
+                        <!--lightning:button type="submit" name="Submit" label="submit" class="slds-m-top_medium"/-->
+                    </div>
+                    <!--END OF THIRD PAGE -->
+                    
+                    
+                    <!--START OF ButtonPage PAGE -->
+                    <div aura:id="ButtonPage">
+                        
+                        <!--BUTTONS GRID -->
+                        <div class="slds-grid">
+                            
+                            <!--PREVIOUS BUTTON -->
+                            <div class="slds-col ">
+                                <div class="slds-clearfix slds-float_right">
+                                    <lightning:button label="Previous" title="Neutral action" disabled="{!v.flag}" onclick="{! c.handlePrevious }"/>
+                                </div>
+                            </div>
+                            <!--END OF PREVIOUS BUTTON -->
+                            
+                            <!--NEXT BUTTON -->
+                            <div class="slds-col">
+                                <lightning:button label="Next" title="Neutral action" disabled="{!v.flag2}" onclick="{! c.handleNext }"/>
+                            </div>
+                            <!--END OF NEXT BUTTON -->
+                            
+                            <!--SUBMIT BUTTON -->
+                            <aura:if isTrue="{!v.increment == 2}">
+                                <div class="slds-col ">
+                                    <div class="slds-clearfix slds-float_right">
+                                        <lightning:button type="submit" name="Submit" label="submit"  variant="brand" title="Neutral action"/>
+                                    </div>
+                                </div>
+                            </aura:if>
+                            
+                            
+                            <!--END OF SUBMIT BUTTON -->
+                            
+                        </div>
+                        <!--END OF BUTTONS GRID -->
+                        
+                        
+                    </div>
+                    
+                    <!--END OF ButtonPage PAGE -->
+                    
+                </lightning:recordEditForm>
+            </div> 
+            <!--END OF BOX INSIDE COLUMN -->
+            
+        </div>
+        <!--FIRST COLOUM -->
+        
+    </div>
+    <!--END OF MAIN PAGE GRID -->
+    
+</aura:component>

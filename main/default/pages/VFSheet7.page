@@ -1,0 +1,15 @@
+<!--"Create an inline Vf page that shows the message(Close date is near) on 
+opportunity when a particular opportunity's close date is 5 days ahead."-->
+<apex:page standardController="Opportunity" extensions="inlineController" lightningStylesheets="true">
+   
+    
+    <apex:outputPanel rendered="{!DateDif}">
+    <apex:form >
+        <apex:pageBlock title="My Inline Visualforce page">
+            <B>CLOSE DATE IS 5 DAYS OR LESS AHEAD</B>
+        </apex:pageBlock>
+    </apex:form>  
+    </apex:outputPanel>
+    <apex:detail inlineEdit="true" relatedList="false" relatedListHover="false" />
+
+</apex:page>

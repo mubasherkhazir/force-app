@@ -1,0 +1,75 @@
+<!--Created a page that will show all accounts with its opportunity and Contacts in picklist value use datatable-->
+<aura:component controller="GetAccountApexController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="Accounts" type="Account[]" />
+    <Table class="slds-table slds-table_cell-buffer slds-table_bordered"> 
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th>
+                    Account Name
+                </th>
+                <th>
+                    Opportunities associated
+                </th>
+                <th>
+                    Contacts related
+                </th>
+            </tr>
+        </thead>
+        <aura:iteration items="{!v.Accounts}" var="account">
+            <tbody>
+                <tr class="slds-hint-parent">
+                    <td>
+                        {!account.Name}                   
+                    </td>
+                    <td>
+                        <lightning:select name="mySelect2" label="Opportunities:" aura:id="mySelect2" >
+                            <aura:iteration items="{!account.Opportunities}" var="opp">
+                                <option text="{!opp.Name}" value="{!opp.Name}"/>
+                            </aura:iteration>
+                        </lightning:select>
+                    </td>
+                    <td>
+                        <lightning:select name="mySelect1" label="Contacs:" aura:id="mySelect1">
+                            <aura:iteration items="{!account.Contacts}" var="con">
+                                <option text="{!con.Name}" value="{!con.Name}" />
+                            </aura:iteration>
+                        </lightning:select>
+                    </td>
+                </tr>                            
+            </tbody>
+        </aura:iteration>
+    </Table>
+    
+    <!-- simply done using dropdowns -->
+    <aura:iteration items="{!v.Accounts}" var="account">
+        <lightning:card
+                        variant="Narrow"
+                        title="{!account.Name}"
+                        iconName="standard:account"
+                        >
+            <aura:set attribute="footer">
+                <lightning:badge label="{!account.Name}" />
+            </aura:set>
+            <p class="slds-p-horizontal_small">
+                <lightning:select name="mySelect1" label="Contacs:" aura:id="mySelect1">
+                    <aura:iteration items="{!account.Contacts}" var="con">
+                        <option text="{!con.Name}" value="{!con.Name}" />
+                    </aura:iteration>
+                </lightning:select>
+            </p>
+            <p class="slds-p-horizontal_small">
+                <lightning:select name="mySelect2" label="Opportunities:" aura:id="mySelect2" >
+                    <aura:iteration items="{!account.Opportunities}" var="opp">
+                        <option text="{!opp.Name}" value="{!opp.Name}"/>
+                    </aura:iteration>
+                </lightning:select>
+            </p>
+        </lightning:card>
+    </aura:iteration>
+    <aura:attribute name="mycolumns" type="List"/>
+    <!--lightning:datatable data="{! v.Accounts }"
+                             columns="{! v.mycolumns }"
+                             keyField="id"
+                             hideCheckboxColumn="true"/-->   
+</aura:component>

@@ -1,0 +1,59 @@
+<!--"Create an aura component that will display all of the objects
+ in the org as a picklist. and if we select the object from picklist then
+another picklist will display fields name."	-->
+<aura:component controller="GetSobject" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    <aura:attribute name="sobjectName" type="List" />
+    <aura:attribute name="fieldList" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+        <lightning:card
+                        variant="Narrow"
+                        title="Objects in MY ORG"
+                        iconName="standard:account"
+                        >
+            <aura:set attribute="footer">
+                <lightning:badge label="author :@mubashir khazir" />
+            </aura:set>
+            <p class="slds-p-horizontal_small">
+                <lightning:select name="mySelect1" label="Object Name:" aura:id="mySelect1" onchange="{!c.getFields}">
+                    <aura:iteration items="{!v.sobjectName}" var="name">
+                        <option text="{!name.QualifiedApiName}" value="{!name.QualifiedApiName}" />
+                    </aura:iteration>
+                </lightning:select>
+            </p>
+            <p class="slds-p-horizontal_small">
+                <lightning:select name="mySelect2" label="Field Name:" aura:id="mySelect2" >
+                    <aura:iteration items="{!v.fieldList}" var="name">
+                        <option text="{!name.Label}" value="{!name.Label}" />
+                    </aura:iteration>
+                </lightning:select>
+            </p>
+            <Table class="slds-table slds-table_cell-buffer slds-table_bordered"> 
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th>
+                            Api Name
+                        </th>
+                        <th>
+                            Data Type
+                        </th>
+                    </tr>
+                </thead>
+               <aura:iteration items="{!v.fieldList}" var="name">
+                    <tbody>
+                        <tr class="slds-hint-parent">
+                            <td>
+                                {!name.QualifiedApiName}
+                            </td>
+                            <td>
+                                {!name.DataType}
+                            </td>
+                        </tr>                            
+                    </tbody>
+                </aura:iteration>
+            </Table>
+
+ <!--Extend the above question and also display field type and Api name of the field.-->
+            
+            </lightning:card>
+        </aura:component>

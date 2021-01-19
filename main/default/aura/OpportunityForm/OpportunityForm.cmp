@@ -1,0 +1,30 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+   
+    <aura:attribute name="enable" type="boolean" default="true" />
+    <aura:attribute name="oppor" type="Opportunity" default="{
+                                                             'Name' : '',
+                                                             'CloseDate' : '',
+                                                             'StageName' :'',
+                                                             'AccountId' : ''
+                                                             }" />
+    <div class='form'>
+        <div class="slds-grid ">
+            <div class="slds-col slds-m-top_medium" style="padding-left: 30px;">
+                <lightning:input name="Name" label="Name" value="{!v.oppor.Name}"/>
+            </div>
+            <div class="slds-col slds-m-top_medium" style="padding-left: 30px;">
+                <lightning:input name="CloseDate" label="Close Date" type="date" value="{!v.oppor.CloseDate}"/>
+            </div>
+            <div class="slds-col slds-m-top_medium" style="padding-left: 30px;">
+                <lightning:input name="StageName" label="Stage Name" value="{!v.oppor.StageName}"/>
+            </div>
+            <div class="slds-col slds-m-top_medium slds-p-left_x-large" style="    margin-top: 42px; padding-left: 30px;">
+                <lightning:buttonIcon iconName="utility:add" size="large" variant="bare" onclick="{! c.addItem }" alternativeText="add" title="add" />
+                <lightning:buttonIcon iconName="utility:delete" size="large" variant="bare" onclick="{! c.destroy }" disabled="{!v.enable}" alternativeText="delete" title="delete" />
+            </div> 
+        </div>
+    </div> 
+    <div>
+        {!v.body}    
+    </div>
+</aura:component>

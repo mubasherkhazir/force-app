@@ -1,0 +1,44 @@
+<aura:component controller = "GetCustomRecord" >
+    <aura:attribute name = "sObject" type = "EntityDefinition"/>
+    <aura:attribute name = "objField" type = "List" />
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <div class="slds-form-element">
+        <div class = "slds-select" >
+            <lightning:select class = "slds-select" aura:id = "auraId" value = "{!v.sObject.QualifiedApiName}" label = "Select a sObject:" onchange = "{!c.getSobjField}">
+                <aura:iteration items = "{!v.sObject}" var = "obj">
+                    <option aura:id="sObj">{!obj.QualifiedApiName}</option>
+                </aura:iteration>
+            </lightning:select><br/><br/><br/>
+            <Table class="slds-table slds-table_cell-buffer slds-table_bordered"> 
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Data Type
+                        </th>
+                        <th>
+                            Api Name
+                        </th>
+                    </tr>
+                </thead>
+                <aura:iteration items="{!v.objField}" var="ob">
+                    <tbody>
+                        <tr class="slds-hint-parent">
+                            <td>
+                                {!ob.Label}
+                            </td>
+                            <td>
+                                {!ob.DataType}
+                            </td>
+                            <td>
+                                {!ob.QualifiedApiName}
+                            </td>
+                        </tr>                            
+                    </tbody>
+                </aura:iteration>
+            </Table>
+        </div>
+    </div>		
+</aura:component>

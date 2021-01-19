@@ -1,0 +1,18 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="answer" type="String" />
+    
+    <aura:attribute name="flag" type="boolean" default="false" />
+    <span style="color:orange;font-size:12px;" id="errorField"></span>
+    
+    <div aura:id="userdev">
+        <lightning:select aura:id="select" name="select" label="Choose your Security Question">
+            <option value="">choose one...</option>
+            <option value="1">What is your favorite color?</option>
+            <option value="2">What is the name of your first school?</option>
+            <option value="3">In what city were you born?</option>
+        </lightning:select>
+        <lightning:input  label="Answer" name="Answer" required="true" value="{!v.answer}" aura:id="answer"/>
+        
+        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Verify" onclick="{!c.match}"/>
+    </div>
+ </aura:component>

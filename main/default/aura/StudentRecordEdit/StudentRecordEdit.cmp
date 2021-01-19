@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="strRecordId" type="String" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <lightning:recordEditForm 
+                              aura:id="editform" 
+                              recordId="{!v.strRecordId}" 
+                              objectApiName="Associate_students__c"
+                              onsubmit="{!c.handleSubmit}"
+                              onsuccess="{!c.handleSuccess}"
+                              >
+        <lightning:messages />
+        <lightning:inputField fieldName="Name" aura:id="studName" />
+        <lightning:inputField fieldName="Status__c" />
+        <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" onclick="{!c.handleUpdate}" />
+        <lightning:button class="slds-m-top_small" name="cancel" variant="brand" label="Cancel" onclick="{!c.handleCancel}"/>
+        
+    </lightning:recordEditForm>
+</aura:component>

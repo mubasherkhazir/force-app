@@ -1,0 +1,54 @@
+<!--Create an aura component that will display table of Account details
+ with sorting option with JQ and Apex.-->
+<aura:component controller="SortTableUsingJQApex" implements="flexipage:availableForRecordHome">
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+        <aura:attribute name="flag" type="Boolean" default="false" />
+    <aura:attribute name="accountList" type="List" />
+    <lightning:card>
+        <Table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th>
+                         <lightning:button variant="base" label="Account Name" title="Account Name" onclick="{! c.sortTable }"/>
+                    </th>  
+                    <th>
+                        Account Number
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        No of Employees
+                    </th>
+                </tr>
+            </thead>  
+            <aura:iteration items="{!v.accountList}" var="account" >
+                <tbody>
+                    <tr class="slds-hint-parent">
+                        <td>
+                            {!account.Name}
+                        </td>
+                        <td>
+                            {!account.AccountNumber }
+                            
+                        </td>
+                        <td>
+                            {!account.Phone}
+                            
+                        </td>
+                        <td>
+                            {!account.NumberOfEmployees }
+                            
+                        </td>
+                    </tr>
+                    
+                </tbody> 
+            </aura:iteration>
+            
+        </Table>
+        
+        
+        
+        
+    </lightning:card>
+</aura:component>

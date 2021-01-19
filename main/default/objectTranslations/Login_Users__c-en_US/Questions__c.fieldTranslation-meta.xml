@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Answer a Security Question --></label>
+    <name>Questions__c</name>
+    <picklistValues>
+        <masterLabel>In what city were you born?</masterLabel>
+        <translation><!-- In what city were you born? --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>What is the name of your first school?</masterLabel>
+        <translation><!-- What is the name of your first school? --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>What is your favorite color?</masterLabel>
+        <translation><!-- What is your favorite color? --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

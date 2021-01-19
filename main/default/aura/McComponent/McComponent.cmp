@@ -1,0 +1,27 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name='title' type='String' />
+    <aura:attribute name='type' type='String' />
+    <aura:attribute name='managedContentId' type='String' />
+    <aura:attribute name='topicsList' type='Object[]' />
+    <aura:attribute name='imgUrl' type='String' />
+    <aura:attribute name='topicsListStr' type='String' />
+    <aura:handler name="init" value="{!this}" action="{!c.do_init}"/>
+    <div class='demo-only' style='width: 30rem;'>
+        <article class='slds-tile'>
+            <div class='slds-tile__detail'>
+                <dl class='slds-list_horizontal slds-wrap'>
+                    <dt class='slds-item_label slds-text-color_weak slds-truncate'>Title : </dt>
+                    <dd class='slds-item_detail slds-truncate'>{!v.title}</dd>
+                    <dt class='slds-item_label slds-text-color_weak slds-truncate'>Content Type : </dt>
+                    <dd class='slds-item_detail slds-truncate'>{!v.type}</dd>
+                    <dt class='slds-item_label slds-text-color_weak slds-truncate'>Managed Content Id : </dt>
+                    <dd class='slds-item_detail slds-truncate'>{!v.managedContentId}</dd>
+                    <dt class='slds-item_label slds-text-color_weak slds-truncate'>Topics List : </dt>
+                    <dd class='slds-item_detail slds-truncate' >{!v.topicsListStr}</dd> 
+                    <dt class='slds-item_label slds-text-color_weak slds-truncate'>Image URL </dt>
+                    <dd class='slds-item_detail slds-truncate'>{!v.imgUrl}</dd>
+                </dl>
+            </div>
+        </article>
+    </div>
+</aura:component>

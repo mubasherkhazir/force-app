@@ -1,0 +1,24 @@
+<apex:page Controller="AccountController" >
+     <head>
+        <apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js"/>
+        <apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"/>
+        <apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css"/>
+        <script>
+        j$ = jQuery.noConflict();
+        j$(document).ready( function () {
+            var accTable = j$('[id$="tabledata"]').DataTable({
+                 
+            });
+        });
+        </script>
+    </head>
+    <apex:pageBlock title="Account Details" tabStyle="account">
+        <apex:outputPanel layout="block" style="max-height:400px; overflow:scroll" id="main" >
+        <apex:dataTable id="tabledata" value="{!AccountList}" var="account" cellPadding="4" border="1" width="75%">
+            <apex:column value="{!account.Name}" headerValue="Account Name"/>
+            <apex:column value="{!account.AccountNumber}" headerValue="Account Number"/>  
+            <apex:column value="{!account.Phone}" headerValue="Phone"/>
+        </apex:dataTable>
+    </apex:outputPanel>
+    </apex:pageBlock>
+</apex:page>

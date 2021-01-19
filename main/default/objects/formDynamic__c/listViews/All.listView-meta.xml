@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Room__c</columns>
+    <columns>Side__c</columns>
+    <columns>Field_Notes__c</columns>
+    <columns>Type_of_Service__c</columns>
+    <columns>Items_Needed__c</columns>
+    <columns>Optional_Customer_Line__c</columns>
+    <columns>Qty__c</columns>
+    <columns>Labor_for_1__c</columns>
+    <columns>Labor_For_All__c</columns>
+    <columns>Glass_for_all__c</columns>
+    <columns>Glass_for_1__c</columns>
+    <columns>Parts_for_1__c</columns>
+    <columns>Parts_for_all__c</columns>
+    <columns>Shop_Price_for_1__c</columns>
+    <columns>Shop_Price_for_all__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Records</label>
+</ListView>

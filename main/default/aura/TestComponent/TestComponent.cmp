@@ -1,0 +1,18 @@
+<aura:component >
+    <aura:attribute name="myAttribute" type="Integer" />
+    <lightning:card title="Counter" iconName="standard:scan_card">
+        <aura:set attribute="footer">
+            <p>Counter: <lightning:formattedText />{!v.myAttribute}</p>
+            <p class="slds-text-title"><lightning:formattedText value="Learning Aura"/></p>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            <lightning:input label="Attribute input" value="{!v.myAttribute}" required="true" />
+            <p>
+         <br />
+         <lightning:button variant="success" label="Success" title="Success" onclick="{! c.doInit }"/>
+                 
+         </p>
+            
+        </p>
+    </lightning:card>
+</aura:component>

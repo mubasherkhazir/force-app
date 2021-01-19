@@ -1,0 +1,43 @@
+<!--Create an aura component that will use to create a new account with five fields values.-->
+<aura:component controller="CreateNewAccountApexController" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="idRecord" type="String" />
+    <aura:attribute name="account" type="Account" default="{
+                                                           'Name'  : '' 
+                                                           , 'Phone' :'',
+                                                           'AccountNumber' : '' ,
+                                                           'Rating' :'', 
+                                                           'BillingPostalCode' :'',
+                                                           'NumberOfEmployees' :''
+                                                           }" />
+    <aura:if isTrue="{!v.idRecord}">
+        <div class="slds-box">
+            <lightning:card  title="Hello">
+                <force:recordEdit aura:id="edit" recordId="{!v.idRecord}" onSaveSuccess="{!c.showToast}"/>
+                <lightning:button class="slds-button slds-button--neutral" label="Save" onclick="{!c.save}"/>
+                <lightning:button class="slds-button slds-button--neutral" onclick="{!c.cancel}" label="Cancel"/>
+
+            </lightning:card>
+        </div>
+        <aura:set attribute="else">
+            <lightning:card  title="Create New Account" iconName="standard:account" footer="Mubashir Khazir">
+                <div class="slds-p-around_medium">
+                    <lightning:recordEditForm aura:id="createAccountForm" recordId="{!v.idRecord}" objectApiName="Account" onsubmit="{!c.createAccount}">
+                        <lightning:messages />
+                        <lightning:inputField fieldName="Name" aura:id="field" value="{!v.account.Name}" />
+                        <lightning:inputField fieldName="Phone" aura:id="field" value="{!v.account.Phone}"/>
+                        <lightning:inputField fieldName="AccountNumber" aura:id="field" value="{!v.account.AccountNumber}"/>
+                        <lightning:inputField fieldName="Rating" aura:id="field" value="{!v.account.Rating}" />
+                        <lightning:inputField fieldName="NumberOfEmployees" aura:id="field" value="{!v.account.NumberOfEmployees}" />
+                        <lightning:inputField fieldName="BillingPostalCode" aura:id="field" value="{!v.account.BillingPostalCode}"/>
+                        <lightning:button type="submit" name="Submit" label="Save" class="slds-m-top_medium"/>
+                        <lightning:button label="Reset" title="Neutral action" class="slds-m-top_medium" onclick="{! c.cancelForm }"/>
+                    </lightning:recordEditForm>
+                    
+                </div>
+            </lightning:card>
+        </aura:set>
+    </aura:if> 
+    
+    
+</aura:component>

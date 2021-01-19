@@ -1,0 +1,38 @@
+<apex:page Standardcontroller="Account">
+    
+    <script>
+    function check(){
+        console.log("hello");
+    var name=document.getElementById('{!$Component.pbid.pbsid.form.pbid2.pbsid2.name1}').value;
+    console.log(name);
+        return confirm("Are you sure you want to to save this account"+name);
+        
+    };
+    
+    </script>
+   <apex:pageBlock id="pbid">
+   <apex:pageBlockSection title="Create a new Account" collapsible="true" id="pbsid">
+   <apex:form id="form">
+        <apex:pageBlock title="Add Account" id="pbid2">
+            <apex:pageBlockButtons >                   
+                <apex:commandButton value="Save" action="{!save}" reRender="liste" onclick="if (!check()) return false;"
+                                    />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>  
+            <apex:pageBlockSection title="Account Details" columns="1" id="pbsid2">            
+                <apex:inputField value="{!Account.name}" id="name1"/> 
+                <apex:inputField value="{!Account.site}"/> 
+                <apex:inputField value="{!Account.type}"/> 
+                <apex:inputField value="{!Account.accountNumber}"/>              
+            </apex:pageBlockSection>          
+            <apex:pageBlockTable value="{!Account}" var="acc" id="liste">              
+                <apex:column value="{!Account.Name}"/>            
+                <apex:column value="{!Account.Site}"/>               
+                <apex:column value="{!Account.type}"/>               
+            </apex:pageBlockTable>             
+        </apex:pageBlock>
+    </apex:form>
+  </apex:pageBlockSection>
+   </apex:pageBlock>
+    
+</apex:page>

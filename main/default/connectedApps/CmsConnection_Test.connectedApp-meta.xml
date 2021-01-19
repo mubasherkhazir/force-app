@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>mubasher.khazir@cloudanalogy.com</contactEmail>
+    <label>CmsConnection Test</label>
+    <oauthConfig>
+        <callbackUrl>https://mubashir-dev-ed.lightning.force.com/</callbackUrl>
+        <consumerKey>3MVG9n_HvETGhr3D3klbqJk2NgBRcyH2yXYUFEDKsSmpErO6vUnEf76qUnIfFRV5G7JrsrhVAPWH3dApl89P8</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <scopes>Full</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

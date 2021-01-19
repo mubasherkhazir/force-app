@@ -1,0 +1,30 @@
+<!--Create a VF page with name "Business Summary" which will show Account Name,
+Total number of Contacts, Total number of Opportunity, Total number of Opportunitylineitems
+realted to that Account in tabular format. Show at least 10 rows in table.Account Name
+should be clickable and should redirect to its detail page. See above pic for table headings. -->
+
+<apex:page controller="BusinessSummary">
+    <apex:form >
+        <apex:pageBlock title="BusinessSummary">
+            <apex:pageBlockTable value="{!Data}" var="d" >
+                <apex:column headerValue="Account Name ">
+                    <apex:commandLink reRender="details">
+                        <apex:param name="aid" value="{!d.parentAccount.id}"/>
+                        {!d.parentAccount.Name}
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Contact Count " value="{!d.conSize}"/>
+                <apex:column headerValue="Opportunity Count " value="{!d.opSize}"/>
+                <apex:column headerValue="OpportunityLineItems Count " value="{!d.oliSize}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:outputPanel id="details" >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Account Details" columns="1" collapsible="true">
+                <apex:detail subject="{!$CurrentPage.parameters.aid}" inlineEdit="true" relatedListHover="false" relatedList="false"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:outputPanel>
+</apex:page>

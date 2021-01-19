@@ -1,0 +1,11 @@
+<apex:page Controller="AccountController">
+    <apex:pageBlock title="Account Details" tabStyle="account">
+        <apex:outputPanel layout="block" style="max-height:400px; overflow:scroll" id="main" >
+        <apex:dataTable value="{!AccountList}" var="account" cellPadding="4" border="1" width="75%">
+            <apex:column value="{!account.Name}" headerValue="Account Name"/>
+            <apex:column value="{!account.AccountNumber}" headerValue="Account Number"/>  
+            <apex:column value="{!account.Phone}" headerValue="Phone"/>
+        </apex:dataTable>
+    </apex:outputPanel>
+    </apex:pageBlock>
+</apex:page>

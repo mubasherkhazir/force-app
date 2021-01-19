@@ -1,0 +1,13 @@
+<apex:page controller="accessmergefieldinjavascript" >
+    
+    <script>
+    
+    var stringvalue='{!s}';
+    
+    var integervalue='{!nn}';
+    
+    alert(' stringvalue '+stringvalue+' integervalue '+integervalue);
+    
+    </script>
+    
+</apex:page>
